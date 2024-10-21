@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"> <!-- Include your CSS file -->
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container">
+        <img src="images/sfit.png" alt="College Logo" class="college-logo">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p id="error-message" style="color: red;"></p>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const errorMessage = document.getElementById('error-message');
+
+    // pass
+        const users = {
+            vinit: '123',
+            daniel: '456'
+        };
+
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Check if the username exists and the password matches
+            if (users[username] && users[username] === password) {
+                // Redirect to the portfolio page if credentials are correct
+                window.location.href = 'index.html';
+            } else {
+                // Display an error message if credentials are incorrect
+                errorMessage.textContent = 'Invalid username or password. Please try again.';
+            }
+        });
+    </script>
+</body>
+</html>
